@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 
 html,
 body {
   margin: 0;
   height: 100%;
-  font-family: 'Varela Round', sans-serif;
+  font-family: "Varela Round", sans-serif;
   font-weight: 900;
   overflow-x: hidden;
   --header: #ccc;
@@ -90,11 +90,18 @@ button:focus {
   &__menu-link:before,
   &__menu-link:after {
     background: rgb(0, 101, 63);
-    background: linear-gradient(135deg, rgba(0, 101, 63, 1) 0%, rgba(0, 179, 118, 1) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(0, 101, 63, 1) 0%,
+      rgba(0, 179, 118, 1) 100%
+    );
   }
 
   &__menu-link {
-    background: -webkit-linear-gradient(rgba(0, 101, 63, 1), rgba(0, 179, 118, 1));
+    background: -webkit-linear-gradient(
+      rgba(0, 101, 63, 1),
+      rgba(0, 179, 118, 1)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     position: relative;
@@ -199,12 +206,10 @@ button:focus {
     .header__menu-toggler--open & {
       & {
         transform: rotate(45deg) translate(25%, 100%);
-
       }
 
       &:after {
         transform: scaleX(0);
-
       }
 
       &:before {
@@ -224,11 +229,15 @@ button:focus {
     &:before {
       transition: 0.5s;
       background: rgb(0, 101, 63);
-      background: linear-gradient(135deg, rgba(0, 101, 63, 1) 0%, rgba(0, 179, 118, 1) 100%);
+      background: linear-gradient(
+        135deg,
+        rgba(0, 101, 63, 1) 0%,
+        rgba(0, 179, 118, 1) 100%
+      );
     }
 
     & {
-      top: .625em;
+      top: 0.625em;
       left: 0.25em;
       position: absolute;
       height: 0.4em;
@@ -256,7 +265,11 @@ button:focus {
 
   .dark-mode & {
     background: rgb(0, 101, 63);
-    background: linear-gradient(135deg, rgba(0, 101, 63, 1) 0%, rgba(0, 179, 118, 1) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(0, 101, 63, 1) 0%,
+      rgba(0, 179, 118, 1) 100%
+    );
   }
 
   .dark-mode &__menu-link {
@@ -320,11 +333,14 @@ main {
     display: flex;
     align-items: center;
     background-color: #f3f3f3;
-
   }
 
   .dark-mode & {
     background: rgb(0, 101, 63);
-    background: linear-gradient(135deg, rgba(0, 101, 63, 1) 0%, rgba(0, 179, 118, 1) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(0, 101, 63, 1) 0%,
+      rgba(0, 179, 118, 1) 100%
+    );
   }
 }

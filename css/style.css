@@ -3,7 +3,7 @@ html,
 body {
   margin: 0;
   height: 100%;
-  font-family: 'Varela Round', sans-serif;
+  font-family: "Varela Round", sans-serif;
   font-weight: 900;
   overflow-x: hidden;
   --header: #ccc;
@@ -238,7 +238,7 @@ button:focus {
 }
 
 .header__menu-toggler-shape {
-  top: .625em;
+  top: 0.625em;
   left: 0.25em;
   position: absolute;
   height: 0.4em;
