@@ -1,13 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
 html,
 body {
   margin: 0;
   height: 100%;
+  font-family: 'Varela Round', sans-serif;
+  font-weight: 900;
+  overflow-x: hidden;
+  --header: #ccc;
+  --header-text: #fff;
 }
 
-$grey: #ccc;
-$black: #000;
+html .dark-mode {
+  --header: #000;
+  --header-text: #000;
+  background-color: black;
+}
 
-@media (max-width: 768px) {}
+a {
+  text-decoration: none;
+}
+
+button:focus {
+  border: none;
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .header {
+    &__menu {
+      padding-top: 3em !important;
+      padding-left: 2.5em !important;
+      flex-direction: column !important;
+    }
+
+    &__dark-mode-toggler {
+      right: 4.25em !important;
+    }
+
+    &__menu-toggler {
+      display: block !important;
+    }
+
+    & {
+      padding-left: 0em !important;
+    }
+
+    &__menu-item:last-of-type {
+      padding-bottom: 1em !important;
+    }
+  }
+}
 
 .container {
   min-height: 100%;
@@ -16,37 +59,272 @@ $black: #000;
 }
 
 .header {
-  .dark-mode &{
-    background-color: $black;
-    color:white;
-  }
   & {
-    width: 100%;
-    height: 5em;
-    background-color: $grey;
-    color:black;
+    top: 0;
+    left: 0;
+    position: sticky;
+    padding-left: 10em;
+    padding-right: 3em;
+    min-height: 3em;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #f3f3f3;
   }
 
   &__menu {
     margin: 0;
-    padding: 0;
+    padding: 0 5em;
     width: 100%;
     list-style: none;
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
   }
 
   &__menu-item {
-    color: white;
+    margin-right: 2em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
   }
 
-  // &__navigation {
-  //   width: 50%;
-  //   height: 50%;
-  //   background-color: $grey;
-  // }
+  &__menu-link:before,
+  &__menu-link:after {
+    background: rgb(0, 101, 63);
+    background: linear-gradient(135deg, rgba(0, 101, 63, 1) 0%, rgba(0, 179, 118, 1) 100%);
+  }
+
+  &__menu-link {
+    background: -webkit-linear-gradient(rgba(0, 101, 63, 1), rgba(0, 179, 118, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &::after {
+      bottom: 0;
+      left: 0;
+      content: "";
+      position: absolute;
+      width: 50%;
+      height: 0.125em;
+      background-color: white;
+      transition: 0.5s;
+      pointer-events: none;
+    }
+
+    &:hover::after {
+      width: 1.5em;
+      right: 0;
+      transform: translate(-75%, -400%) rotate(90deg);
+    }
+
+    &::before {
+      bottom: 0;
+      right: 0;
+      content: "";
+      position: absolute;
+      width: 50%;
+      height: 0.125em;
+      background-color: white;
+      transition: 0.5s;
+      transform: rotate(180deg);
+      pointer-events: none;
+    }
+
+    &:hover::before {
+      width: 1.5em;
+      right: 0;
+      transform: translate(75%, -400%) rotate(90deg);
+    }
+  }
+
+  &__logo {
+    top: 1em;
+    left: 2.5em;
+    position: absolute;
+  }
+
+  &__dark-mode-toggler {
+    top: 0.25em;
+    right: 0.25em;
+    position: absolute;
+    height: 3em;
+    width: 3em;
+    color: white;
+    background: none;
+    border: none;
+    z-index: 100;
+
+    .header--dark-mode-animated & {
+      pointer-events: none;
+    }
+  }
+
+  &__dark-mode-toggler-animation {
+    pointer-events: none;
+    top: 0.25em;
+    right: 4.25em;
+    position: fixed;
+    border-radius: 50%;
+    background-color: #000;
+    z-index: 99;
+
+    .header--turning-dark-mode & {
+      background: #ccc;
+    }
+
+    .header--dark-mode-animated & {
+      animation: 2s linear dark-mode-change;
+    }
+  }
+
+  &__menu-toggler {
+    top: 0.25em;
+    right: 0.25em;
+    position: absolute;
+    height: 3em;
+    width: 3em;
+    display: none;
+    background: none;
+    border: none;
+  }
+
+  &__menu-toggler-shape {
+    .header__menu-toggler--open & {
+      & {
+        transform: rotate(45deg) translate(25%, 100%);
+
+      }
+
+      &:after {
+        transform: scaleX(0);
+
+      }
+
+      &:before {
+        top: 0;
+        transform: rotate(-90deg) translate(0, 0);
+      }
+    }
+
+    .dark-mode &,
+    .dark-mode &:after,
+    .dark-mode &:before {
+      background: white;
+    }
+
+    &,
+    &:after,
+    &:before {
+      transition: 0.5s;
+      background: rgb(0, 101, 63);
+      background: linear-gradient(135deg, rgba(0, 101, 63, 1) 0%, rgba(0, 179, 118, 1) 100%);
+    }
+
+    & {
+      top: .625em;
+      left: 0.25em;
+      position: absolute;
+      height: 0.4em;
+      width: 2.25em;
+    }
+
+    &:after {
+      content: "";
+      top: 0.75em;
+      left: 0;
+      position: absolute;
+      height: 0.4em;
+      width: 2.25em;
+    }
+
+    &:before {
+      content: "";
+      top: 1.5em;
+      left: 0;
+      position: absolute;
+      height: 0.4em;
+      width: 2.25em;
+    }
+  }
+
+  .dark-mode & {
+    background: rgb(0, 101, 63);
+    background: linear-gradient(135deg, rgba(0, 101, 63, 1) 0%, rgba(0, 179, 118, 1) 100%);
+  }
+
+  .dark-mode &__menu-link {
+    background: -webkit-linear-gradient(#fff, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .dark-mode &__menu-link:after,
+  .dark-mode &__menu-link:before {
+    background: #fff;
+  }
+
+  & path {
+    cursor: pointer;
+    transition: 0.5;
+    fill: rgba(0, 179, 118, 1);
+    transition: 0.5s;
+  }
+
+  .dark-mode & path {
+    fill: #fff;
+  }
+
+  & button {
+    transition: 0.5;
+  }
+
+  & button:hover {
+    transform: scale(1.1);
+  }
+}
+@keyframes dark-mode-change {
+  0% {
+    display: block;
+    transform: translate(50%, -50%);
+    height: 1em;
+    width: 1em;
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(50%, -50%);
+    height: 250vw;
+    width: 250vw;
+  }
+
+  90% {
+    opacity: 0;
+  }
 }
 
 main {
   flex: 1 1 auto;
+}
+
+.footer {
+  & {
+    min-height: 3em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #f3f3f3;
+
+  }
+
+  .dark-mode & {
+    background: rgb(0, 101, 63);
+    background: linear-gradient(135deg, rgba(0, 101, 63, 1) 0%, rgba(0, 179, 118, 1) 100%);
+  }
 }
